@@ -102,5 +102,12 @@
     "passwordConfirmed": "$2a$10$OO4pbKehdDwCU7XiPxRHU.lzKPpX/oXvYyG8NJAtLf45GbpKU8Hp2",
     "id": "257adfe5-2528-4b37-b3df-bc2d16bc71bb",
     "image": "/users/user-img-1660513294358.jpg"
+  },
+  {
+    "firstName": "uriel",
+    "email": "garmendiauriel@gmail.com",
+    "password": "$2a$10$RQNow5SKckKaUbjzXumzEuGIboCHJxPTHa1qDIH3eNUk5KITqjSLK",
+    "passwordConfirmed": "$2a$10$RQNow5SKckKaUbjzXumzEuGIboCHJxPTHa1qDIH3eNUk5KITqjSLK",
+    "id": "d98f2b62-dc85-47e8-b942-726c58008058"
   }
 ]

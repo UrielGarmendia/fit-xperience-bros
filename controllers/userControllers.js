@@ -25,7 +25,6 @@ const usersControllers = {
         }
 
         let user = req.body;
-        let image = req.file.filename;
 
         if (user.password == user.passwordConfirmed) {
             user.password = bcryptjs.hashSync(user.password, 10);
@@ -56,8 +55,7 @@ const usersControllers = {
 			});
 		}
 
-        user.id = uuidv4();
-        user.image = image;
+        user.id = uuidv4()
 
         if (resultValidation.errors.length == 0 && user.password == user.passwordConfirmed) {
             usersList.push(user);
