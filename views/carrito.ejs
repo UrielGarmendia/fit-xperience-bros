@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <%- include('./partials/head') %>
+    <title>Carrito</title>
+    <link rel="stylesheet" href="/css/carrito.css">
+
+</head>
+
+<body>
+    <!-- H    E    A    D     E    R -->
+    <%- include('./partials/header')  %> 
+    <!-- M    A    I    N -->
+    <main>
+        <!-- RESUMEN DE COMPRA -->
+        <form action="#" class="article-resumen-de-compra">
+            <div class="resumen-de-compra">
+                <h2>
+                    RESUMEN DE COMPRA
+                </h2>
+                <input type="text" name="cupon" placeholder="Cupon de descuento">
+                <input type="text" name="total" placeholder="Total">
+            </div>
+    
+            <button type="submit" class="boton-enviar">FINALIZAR COMPRA</button>
+        </form>
+        <!-- PRODUCTOS -->
+        <section class="ofertas">
+            <a href="#">
+                <h3>Productos agregados a tu carrito</h3>
+            </a>
+            <div class="productos">
+
+                <% for(let index = 0; index < 4; index++) { %>
+                    <article>  
+                        <a href="/products/<%= productos[index].id %>">
+                            <img src="/images/<%= productos[index].image %>" alt="pesas-negro">
+                            <div class="main-article">
+                                <div class="div-precio-descuento">
+                                    <p class="precio"><%= productos[index].price %></p>
+                                    <p class="descuento"><%= productos[index].discount %></p>
+                                </div>
+                                <h4 class="descripcion"><%= productos[index].name %></h4>
+                                 <form>
+                                    <button type="submit" class="boton-eliminar icono-eliminar">
+                                    <div class="contenedor-icono-eliminar">
+                                        <i class="fa-solid fa-trash-can"></i>
+                                    </div>
+                                </button>
+                                </form>
+                            </div>
+                        </a>
+                </article>
+                <% } %>
+            </div>
+        </section>
+
+    </main>
+    <!-- FOOTER -->
+    <%- include('./partials/footer') %>
+</body>
+
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <%- include('./partials/head') %>
+    <title>Home-shop</title>
+    <!-- CSS -->
+    <link rel="stylesheet" href="/css/home-shop.css">
+</head>
+
+<body>
+    <!-- BARRA DE NAVEGACION -->
+    <%- include('./partials/header')  %> 
+    <!-- BANNER -->
+    <img src="images/accessories-desktop-banner.jpg" class="bannner" alt="banner" />
+    <!-- MAIN -->
+    <main>
+        <section class="ofertas">
+            <a href="#">
+                <h3>Productos en oferta</h3>
+            </a>
+            <div class="productos">
+
+                <% for(let index = 0; index < productos.length; index++) { %>
+                    <article>  
+                        <a href="/products/<%= productos[index].id %>">
+                            <img src="/images/<%= productos[index].image %>" alt="pesas-negro">
+                            <div class="main-article">
+                                <div class="div-precio-descuento">
+                                    <p class="precio"><%= productos[index].price %></p>
+                                    <p class="descuento"><%= productos[index].discount %></p>
+                                </div>
+                                <h4 class="descripcion"><%= productos[index].name %></h4>
+                            </div>
+                        </a>
+                </article>
+                <% } %>
+            </div>
+        </section>
+
+
+        
+    </main>
+    <!-- FOOTER -->
+    <%- include('./partials/footer') %>
+    
+</body>
+
+</html>
