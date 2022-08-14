@@ -94,5 +94,13 @@
     "passwordConfirmed": "$2a$10$mt62LgaNSvjgVGjmAI.nF.30qK8NajN61IWbIFICkiiRGAsYL2Gjm",
     "id": "0ca40b68-f5e0-40ea-a978-81f7f4409012",
     "image": "/users/user-img-1660261204791.jpg"
+  },
+  {
+    "firstName": "suarez",
+    "email": "suarez@gmail.com",
+    "password": "$2a$10$OO4pbKehdDwCU7XiPxRHU.lzKPpX/oXvYyG8NJAtLf45GbpKU8Hp2",
+    "passwordConfirmed": "$2a$10$OO4pbKehdDwCU7XiPxRHU.lzKPpX/oXvYyG8NJAtLf45GbpKU8Hp2",
+    "id": "257adfe5-2528-4b37-b3df-bc2d16bc71bb",
+    "image": "/users/user-img-1660513294358.jpg"
   }
 ]

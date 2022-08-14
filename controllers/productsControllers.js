@@ -9,7 +9,7 @@ const { validationResult } = require('express-validator');
 const productsControllers = {
     index: (req,res) => {
         //enviara la lista de todos los productos
-        console.log(req.session.userLogged);
+        // console.log(req.session.userLogged);
         res.render('home-shop', { productos: productsList, user: req.session.userLogged });
     },
 
@@ -32,7 +32,7 @@ const productsControllers = {
 
     newProducts: (req,res) => {
         //recepcion de informacion cargada en el form  de "createProducts"
-        console.log(req.session.userLogged);
+        // console.log(req.session.userLogged);
         const resultValidation = validationResult(req);
 
         if (resultValidation.errors.length > 0) {
