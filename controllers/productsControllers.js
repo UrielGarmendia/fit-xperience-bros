@@ -3,6 +3,7 @@ const fs = require ("fs")
 const path = require('path');
 const productsListPath = path.join(__dirname,"../data/products.json");
 const productsList = JSON.parse(fs.readFileSync(productsListPath,"utf-8"));
+const db = require("../database/models");
 
 const { validationResult } = require('express-validator');
 
@@ -10,7 +11,11 @@ const productsControllers = {
     index: (req,res) => {
         //enviara la lista de todos los productos
         // console.log(req.session.userLogged);
-        res.render('home-shop', { productos: productsList, user: req.session.userLogged });
+        // res.render('home-shop', { productos: productsList, user: req.session.userLogged });
+        db.Productos.findAll()
+        .then((productos) => {
+            res.render("home-shop", { productos:productos })
+        })
     },
 
     carrito: (req, res) => {
