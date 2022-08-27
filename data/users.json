@@ -82,32 +82,16 @@
   {
     "firstName": "messi",
     "email": "messi10@gmail.com",
-    "password": "$2a$10$8EqVwbCLrz0IqxzCiJnPdOjd4UN1hC9laKdAvCXsRf4HnE9PR5bN6",
-    "passwordConfirmed": "$2a$10$8EqVwbCLrz0IqxzCiJnPdOjd4UN1hC9laKdAvCXsRf4HnE9PR5bN6",
-    "id": "6983a446-660f-4bb9-8523-e766fd364ab9",
-    "image": "/users/user-img-1660260653215.jpg"
+    "password": "$2a$10$Aj/bGgoqRhSQKz4tbU0wRuIeolBYmBAnCuLhFnqXYz4yM6AhHx9iG",
+    "passwordConfirmed": "$2a$10$Aj/bGgoqRhSQKz4tbU0wRuIeolBYmBAnCuLhFnqXYz4yM6AhHx9iG",
+    "id": "05eaa76e-3a35-49f7-a47d-ffc2c2faa771",
+    "image": "/users/user-img-1660606807065.jpg"
   },
   {
     "firstName": "neymar",
     "email": "neymar11@gmail.com",
-    "password": "$2a$10$mt62LgaNSvjgVGjmAI.nF.30qK8NajN61IWbIFICkiiRGAsYL2Gjm",
-    "passwordConfirmed": "$2a$10$mt62LgaNSvjgVGjmAI.nF.30qK8NajN61IWbIFICkiiRGAsYL2Gjm",
-    "id": "0ca40b68-f5e0-40ea-a978-81f7f4409012",
-    "image": "/users/user-img-1660261204791.jpg"
-  },
-  {
-    "firstName": "suarez",
-    "email": "suarez@gmail.com",
-    "password": "$2a$10$OO4pbKehdDwCU7XiPxRHU.lzKPpX/oXvYyG8NJAtLf45GbpKU8Hp2",
-    "passwordConfirmed": "$2a$10$OO4pbKehdDwCU7XiPxRHU.lzKPpX/oXvYyG8NJAtLf45GbpKU8Hp2",
-    "id": "257adfe5-2528-4b37-b3df-bc2d16bc71bb",
-    "image": "/users/user-img-1660513294358.jpg"
-  },
-  {
-    "firstName": "uriel",
-    "email": "garmendiauriel@gmail.com",
-    "password": "$2a$10$RQNow5SKckKaUbjzXumzEuGIboCHJxPTHa1qDIH3eNUk5KITqjSLK",
-    "passwordConfirmed": "$2a$10$RQNow5SKckKaUbjzXumzEuGIboCHJxPTHa1qDIH3eNUk5KITqjSLK",
-    "id": "d98f2b62-dc85-47e8-b942-726c58008058"
+    "password": "$2a$10$os2Bc834ieYVlOw0zhs9zuvXZJSf1WBt7SKC/BJ6RP6QzjEs83..u",
+    "passwordConfirmed": "$2a$10$os2Bc834ieYVlOw0zhs9zuvXZJSf1WBt7SKC/BJ6RP6QzjEs83..u",
+    "id": "1a406ee1-44ca-4636-b0aa-79440ed17523"
   }
 ]

@@ -1,21 +1,20 @@
-module.exports = (sequelize, dataTypes) => {
-    const alias = "Productos_Categorias";
-    const cols = {
+module.exports = function (sequelize,DataTypes) { 
+    let alias = "Productos-Categorias";
+    let cols = {
         id_product: {
-            type: dataTypes.INTEGER,
-            notNull: true
+            type: DataTypes.INTEGER,
+            notNull:true
         },
         id_category: {
-            type: dataTypes.INTEGER,
-            notNull: true
+            type: DataTypes.INTEGER,
+            notNull:true
         },
     };
-    const config = {
+    let config = {
         tableName: "products_categories",
-        timestamps: false
-    }; 
+        timestamps:false
+    };
     
-    const Producto_Categoria = sequelize.define(alias, cols, config);
-
+    const Producto_Categoria = sequelize.define(alias,cols,config)
     return Producto_Categoria;
 };
