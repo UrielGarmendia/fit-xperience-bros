@@ -10,7 +10,7 @@ const mainRoutes = require('./routes/mainRoutes');
 const productsRoutes = require('./routes/productsRoutes.js');
 const usersRoutes = require('./routes/usersRoutes.js');
 
-const PORT = process.env.PORT || 8000;
+const PORT = process.env.PORT || 12000;
 const publicFolderPath = path.join(__dirname, './public');
 
 const userLoggedMiddleware = require('./middlewares/userLoggedMiddleware');
