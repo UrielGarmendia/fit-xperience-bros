@@ -1,8 +1,11 @@
-const { v4: uuidv4 } = require ("uuid")
-const fs = require ("fs")
+const { v4: uuidv4 } = require ("uuid");
+const fs = require ("fs");
 const path = require('path');
 const productsListPath = path.join(__dirname,"../data/products.json");
 const productsList = JSON.parse(fs.readFileSync(productsListPath,"utf-8"));
+const db = require('../database/models/Producto');
+const db = require('../database/models/Producto_Categoria');
+const db = require('../database/models/Categoria');
 
 const { validationResult } = require('express-validator');
 
@@ -19,15 +22,23 @@ const productsControllers = {
 
     createProducts: (req, res) => {
         //enviara el formulario para crear el producto
-        res.render("products/formulario-de-carga", { user: req.session.userLogged });
+        db.Producto.findAll()
+            .then((productos) => {
+                res.render("products/formulario-de-carga", { user: req.session.userLogged });           
+            })
     },
 
     productsId: (req, res) => {
         //enviara la informacion de un producto segun su ID
-        let id = req.params.id;
-        let producto = productsList.find(producto => producto.id == id);
-        // console.log('------Si aparece: Cannot read properties of undefined. Ignorar el error--------');
-        res.render("detalle-producto", { producto, productos: productsList, user: req.session.userLogged });
+        // let id = req.params.id;
+        // let producto = productsList.find(producto => producto.id == id);
+        // // console.log('------Si aparece: Cannot read properties of undefined. Ignorar el error--------');
+        db.Pelicula.findByPk(req.params.id, {
+            include: [{ association : "productos-categoria" }, {associate : "usuarios"}]
+        })
+            .then((pelicula) => {
+                res.render("detalle-producto", { producto, productos: productsList, user: req.session.userLogged });
+            })
     },
 
     newProducts: (req,res) => {
@@ -43,69 +54,102 @@ const productsControllers = {
             });
         };
 
+        db.Producto.create({
+            name: req.body.name,
+            price: req.body.price,
+            description: req.body.description,
+            image:req.body.image 
+        });
 
-        let product = req.body;
-        let image = req.file.filename;
+        res.redirect('/products');
 
-        product.id = uuidv4();
-        product.image = image;
 
-        if (resultValidation.errors.length == 0) {
-            productsList.push(product);
+        // let product = req.body;
+        // let image = req.file.filename;
 
-            fs.writeFileSync(productsListPath, JSON.stringify(productsList, null, 2))
+        // product.id = uuidv4();
+        // product.image = image;
+
+        // if (resultValidation.errors.length == 0) {
+        //     productsList.push(product);
+
+        //     fs.writeFileSync(productsListPath, JSON.stringify(productsList, null, 2))
 
            
-            res.redirect('/products');
-        }
+        // }
     },
     modifyProducts: (req,res) =>{
         // envio del formulario para modificar el producto
-       let id = req.params.id;
-       let producto = productsList.find(producto => producto.id == id);
 
-        res.render("products/formulario-de-edicion", { producto, user: req.session.userLogged });
+            let pedidoProducto = db.Producto.findByPk(req.params.id);
+            let pedidoCategorias = db.Categoria.findAll();
+
+            Promise.all([pedidoProducto, pedidoCategorias])
+                .then(([producto, categorias]) => {
+                    res.render("products/formulario-de-edicion", { producto, user: req.session.userLogged });
+                })
+
     },
 
     productsUser: (req, res) => {
         // envio de la vista de los productos subidos por el usuario
-        res.render('mis-productos', { productos: productsList, user: req.session.userLogged });
+        db.Producto.findAll()
+            .then((productos) => {
+                res.render('mis-productos', { productos: productsList, user: req.session.userLogged });
+        })
     },
 
     updateProducts: (req,res) => {
         //recepcion y procesado de las modificaciones del producto en el "modifyProducts"
-        let id = req.params.id;
-        let newProduct = req.body;
-        let image = req.file.filename;
+        // let id = req.params.id;
+        // let newProduct = req.body;
+        // let image = req.file.filename;
 
-        newProduct.id = id;
+        // newProduct.id = id;
 
-        for (let index = 0; index < productsList.length; index++) {
-            const element = productsList[index];
-            if (element.id == id) {
-                productsList[index] = newProduct;
-                newProduct.image = image;
+        // for (let index = 0; index < productsList.length; index++) {
+        //     const element = productsList[index];
+        //     if (element.id == id) {
+        //         productsList[index] = newProduct;
+        //         newProduct.image = image;
+        //     }
+        // }
+
+        // fs.writeFileSync(productsListPath, JSON.stringify(productsList, null, 2));
+
+        db.Producto.update({
+            name: req.body.name,
+            price: req.body.price,
+            description: req.body.description,
+            image:req.body.image 
+        },{
+            where: {
+                id: req.params.id
             }
-        }
+        });
 
-        fs.writeFileSync(productsListPath, JSON.stringify(productsList, null, 2));
-
-        res.redirect('/products');
+        res.redirect('/products/' + req.params.id)
     },
 
     deleteProducts: (req, res) => {
         // proceso de eliminacion de productos
-        let id = req.params.id;
-        for (let index = 0; index < productsList.length; index++) {
-            const element = productsList[index];
-            if (element.id == id) {
-                productsList.splice(index, 1);
-            }
-        }
+        // let id = req.params.id;
+        // for (let index = 0; index < productsList.length; index++) {
+        //     const element = productsList[index];
+        //     if (element.id == id) {
+        //         productsList.splice(index, 1);
+        //     }
+        // }
 
-        fs.writeFileSync(productsListPath, JSON.stringify(productsList, null, 2));
+        // fs.writeFileSync(productsListPath, JSON.stringify(productsList, null, 2));
 
-        res.redirect('/products/uploadedProducts');
+        db.Producto.destroy({ 
+            where: {
+                id: req.params.id
+            }})
+
+            res.redirect('/products');
+            
     }
 }
 

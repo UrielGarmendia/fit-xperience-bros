@@ -1,30 +1,44 @@
-module.exports = function (sequelize,DataTypes) { 
-    let alias = "Usuarios";
-    let cols = {
+module.exports = (sequelize, dataTypes) => {
+    const alias = "Usuarios";
+    const cols = {
         id: {
-            type: DataTypes.INTEGER,
+            type: dataTypes.INTEGER,
             primaryKey: true,
-            autoIncrement:true,
-            notNull:true
+            autoIncrement: true,
+            notNull: true
+        },
+        id_product: {
+            type: dataTypes.INTEGER,
+            notNull: true
         },
         name: {
-            type: DataTypes.STRING,
-            notNull:true
+            type: dataTypes.STRING,
+            notNull: true
         },
-        email:{
-            type: DataTypes.STRING,
-            notNull:true
-        } ,
+        email: {
+            type: dataTypes.STRING,
+            notNull: true
+        },
         password: {
-            type: DataTypes.STRING,
-            notNull:true
+            type: dataTypes.STRING,
+            notNull: true
         },
     };
-    let config = {
+    const config = {
         tableName: "users",
-        timestamps:false
-    };
+        timestamps: false
+        // El config es opcional, pero si mezclamos ingles y español, si hay que usarlo
+        // timestamps:false sirve para decirle a sequelize que no estamos usando las columnas create_at y update_at, que sirven para hacer un seguimiento de fecha de creacion y de actualizacion de los registros.
+    }; 
     
-    const Usuario = sequelize.define(alias,cols,config)
+    const Usuario = sequelize.define(alias, cols, config);
+
+    Usuario.associate = (models) => {
+        Usuario.belongTo(models.Producto, {
+            as: "productos",
+            foreignKey: "id_user"
+        })
+    }
+
     return Usuario;
-};
+}
