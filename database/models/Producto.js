@@ -1,30 +1,32 @@
-module.exports = (sequelize, dataTypes) => {
+const Producto_Categoria = require("./Producto_Categoria");
+
+module.exports = (sequelize, dataType) => {
     const alias = "Productos";
     const cols = {
         id: {
-            type: dataTypes.INTEGER,
+            type: dataType.INTEGER,
             primaryKey: true,
             autoIncrement: true,
             notNull: true
         },
         id_user: {
-            type: dataTypes.INTEGER,
+            type: dataType.INTEGER,
             notNull: true
         },
         name: {
-            type: dataTypes.STRING,
+            type: dataType.STRING,
             notNull: true
         },
         price: {
-            type: dataTypes.INTEGER,
+            type: dataType.INTEGER,
             notNull: true
         },
         description: {
-            type: dataTypes.STRING,
+            type: dataType.STRING,
             notNull: true
         },
         image: {
-            type: dataTypes.BLOB,
+            type: dataType.BLOB,
             notNull: true
         },
     };
@@ -35,18 +37,18 @@ module.exports = (sequelize, dataTypes) => {
 
     const Producto = sequelize.define(alias, cols, config);
 
-    Producto.associate = (models) => {
-        Producto.hasMany(models.Usuario, {
+    Producto_Categoria.associate = (models) => {
+        Producto_Categoria.hasMany(models.Usuario, {
             as: "usuarios",
             foreignKey: "id_product"
         });
 
-        Producto.belongsToMany(models.Producto, {
+        Producto.belongsTo(models.Producto_Categoria, {
             as: "productos-categoria",
             through: "Producto_Categoria",
             foreignKey: "id_product",
             otherKey: "id_category",
-            timestam: false
+            timestamps: false
         });
     }
 

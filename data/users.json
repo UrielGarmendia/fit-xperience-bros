@@ -93,5 +93,12 @@
     "password": "$2a$10$os2Bc834ieYVlOw0zhs9zuvXZJSf1WBt7SKC/BJ6RP6QzjEs83..u",
     "passwordConfirmed": "$2a$10$os2Bc834ieYVlOw0zhs9zuvXZJSf1WBt7SKC/BJ6RP6QzjEs83..u",
     "id": "1a406ee1-44ca-4636-b0aa-79440ed17523"
+  },
+  {
+    "firstName": "usuario-de-prueba",
+    "email": "garmendiauriel@gmail.com",
+    "password": "$2a$10$6cspjAmggApAbp/TLImcx.KB84J5ryf6XGQkuzI0OMzjOffdH6mea",
+    "passwordConfirmed": "$2a$10$6cspjAmggApAbp/TLImcx.KB84J5ryf6XGQkuzI0OMzjOffdH6mea",
+    "id": "d3a883e8-e4bd-43cf-8536-8b879edefb58"
   }
 ]

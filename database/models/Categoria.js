@@ -1,14 +1,20 @@
-module.exports = function (sequelize,DataTypes) { 
+const Producto = require("./Producto");
+
+module.exports = function (sequelize,DataType) { 
     let alias = "Categorias";
     let cols = {
         id: {
-            type: DataTypes.INTEGER,
+            type: DataType.INTEGER,
             primaryKey: true,
             autoIncrement:true,
             notNull:true
         },
+        id_producto: {
+            type: DataType.INTEGER,
+            notNull: true,
+        },
         name: {
-            type: DataTypes.STRING,
+            type: DataType.STRING,
             notNull:true
         },
     };
@@ -19,13 +25,12 @@ module.exports = function (sequelize,DataTypes) {
     
     const Categoria = sequelize.define(alias,cols,config)
 
-    Categoria.associate = (models) => {
-        Categoria.belongsToMany(models.Categoria, {
-            as: "productos-categoria",
-            through: "Producto_Categoria",
+    Producto.associate = (models) => {
+        Producto.hasMany(models.Producto, {
+            as: "productos",
+            through: "Producto",
             foreignKey: "id_product",
-            otherKey: "id_category",
-            timestam: false
+            timestamps: false
         })
     }
 

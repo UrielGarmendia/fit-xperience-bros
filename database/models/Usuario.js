@@ -1,26 +1,28 @@
-module.exports = (sequelize, dataTypes) => {
+const Producto = require("./Producto");
+
+module.exports = (sequelize, dataType) => {
     const alias = "Usuarios";
     const cols = {
         id: {
-            type: dataTypes.INTEGER,
+            type: dataType.INTEGER,
             primaryKey: true,
             autoIncrement: true,
             notNull: true
         },
         id_product: {
-            type: dataTypes.INTEGER,
+            type: dataType.INTEGER,
             notNull: true
         },
         name: {
-            type: dataTypes.STRING,
+            type: dataType.STRING,
             notNull: true
         },
         email: {
-            type: dataTypes.STRING,
+            type: dataType.STRING,
             notNull: true
         },
         password: {
-            type: dataTypes.STRING,
+            type: dataType.STRING,
             notNull: true
         },
     };
@@ -33,8 +35,8 @@ module.exports = (sequelize, dataTypes) => {
     
     const Usuario = sequelize.define(alias, cols, config);
 
-    Usuario.associate = (models) => {
-        Usuario.belongTo(models.Producto, {
+    Producto.associate = (models) => {
+        Producto.belongTo(models.Producto, {
             as: "productos",
             foreignKey: "id_user"
         })
