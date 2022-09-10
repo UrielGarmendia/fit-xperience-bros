@@ -5,11 +5,11 @@ module.exports = function (sequelize,DataType) {
     let cols = {
         id_product: {
             type: DataType.INTEGER,
-            notNull:true
+            allowNull:false
         },
         id_category: {
             type: DataType.INTEGER,
-            notNull:true
+            allowNull:false
         },
     };
     let config = {

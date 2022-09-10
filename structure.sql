@@ -18,6 +18,7 @@ CREATE TABLE `fit_xperience`.`products` (
   `name` VARCHAR(150) NOT NULL,
   `price` int NOT NULL,
   `description` VARCHAR(1500) NOT NULL,
+  `discount` VARCHAR(4),
   `image` BLOB NOT NULL,
   PRIMARY KEY (`id`),
   foreign key(`id_user`) references users(`id`));

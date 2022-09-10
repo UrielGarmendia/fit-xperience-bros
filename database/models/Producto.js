@@ -7,27 +7,31 @@ module.exports = (sequelize, dataType) => {
             type: dataType.INTEGER,
             primaryKey: true,
             autoIncrement: true,
-            notNull: true
+            allowNull: false
         },
         id_user: {
             type: dataType.INTEGER,
-            notNull: true
+            allowNull: false
         },
         name: {
             type: dataType.STRING,
-            notNull: true
+            allowNull: false
         },
         price: {
             type: dataType.INTEGER,
-            notNull: true
+            allowNull: false
         },
         description: {
             type: dataType.STRING,
-            notNull: true
+            allowNull: false
+        },
+        discount: {
+            type: dataType.STRING,
+            allowNull: true
         },
         image: {
             type: dataType.BLOB,
-            notNull: true
+            allowNull: false
         },
     };
     const config = {

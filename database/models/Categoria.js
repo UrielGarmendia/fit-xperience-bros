@@ -7,15 +7,15 @@ module.exports = function (sequelize,DataType) {
             type: DataType.INTEGER,
             primaryKey: true,
             autoIncrement:true,
-            notNull:true
+            allowNull:false        
         },
         id_producto: {
             type: DataType.INTEGER,
-            notNull: true,
+            allowNull:false
         },
         name: {
             type: DataType.STRING,
-            notNull:true
+            allowNull:false        
         },
     };
     let config = {

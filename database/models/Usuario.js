@@ -7,23 +7,23 @@ module.exports = (sequelize, dataType) => {
             type: dataType.INTEGER,
             primaryKey: true,
             autoIncrement: true,
-            notNull: true
+            allowNull: false
         },
         id_product: {
             type: dataType.INTEGER,
-            notNull: true
+            allowNull: false
         },
         name: {
             type: dataType.STRING,
-            notNull: true
+            allowNull: false
         },
         email: {
             type: dataType.STRING,
-            notNull: true
+            allowNull: false
         },
         password: {
             type: dataType.STRING,
-            notNull: true
+            allowNull: false
         },
     };
     const config = {
